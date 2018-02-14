@@ -1,0 +1,23 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "Exercise for U-Hopper interview. Simple Twitter-like API",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolopomini/twitter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolopomini/twitter/issues"
+  },
+  "homepage": "https://github.com/nicolopomini/twitter#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.5"
+  }
+}
