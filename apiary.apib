@@ -1,0 +1,166 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Twitter
+
+Simple API to add, fetch and search tweets.
+
+## Add tweet [/add]
+
+### Add a new tweet [POST]
+
+Add a new tweet specifying author's user ID and tweet text
+
++ Request (application/json)
+
+        {
+            "user": "5adFgtu23_564aSbmogr346h0q",
+            "text": "Hello world!"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "ok": "true",
+            "result": {
+                "_id": "12dfdbGRqaS34D5Hth5PaXsw",
+                "text": "Hello World!",
+                "published": "2015-08-05T08:40:51.620Z",
+                "user": {
+                    "_id": "5adFgtu23_564aSbmogr346h0q",
+                    "username": "pincopallino",
+                    "name": "Pinco",
+                    "surname": "Pallino"
+                    }
+                }
+        }
+        
++ Response 400 (application/json)
+
+        {
+            "ok": "false",
+            "error_code": 400,
+            "description": "Missing parameter(s)"
+        }
+
++ Response 500 (application/json)
+
+        {
+            "ok": "false",
+            "error_code": 500,
+            "description": "Something went wrong"
+        }
+
+## Fetch new tweets [/fetch]
+
+### Get all new tweets [GET]
+
+Get all new tweets
+
++ Response 200 (application/json)
+
+        {
+            "ok": "true",
+            "result": [
+                {
+                    "_id": "12dfdbGRqaS34D5Hth5PaXsw",
+                    "text": "Hello World!",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "5adFgtu23_564aSbmogr346h0q",
+                        "username": "pincopallino",
+                        "name": "Pinco",
+                        "surname": "Pallino"
+                        }
+                },
+                {
+                    "_id": "mLD34qA12Dfcv094D3Bpo1gh",
+                    "text": "Another tweet",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "9lOrd45Axe174axlfGfCVD23",
+                        "username": "giuseppeverdi",
+                        "name": "Giuseppe",
+                        "surname": "Verdi"
+                        }
+                }
+            ]
+        }
+
+## Fetch new tweets of a specific user [/fetch/{username}]
+
+### Get all new tweets of a specific user [GET]
+
+Get all new tweets made by a specific user
+
++ Parameters
+    - username: Tweet author's username
+    
++ Response 200 (application/json)
+
+        {
+            "ok": "true",
+            "result": [
+                {
+                    "_id": "12dfdbGRqaS34D5Hth5PaXsw",
+                    "text": "Hello World!",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "5adFgtu23_564aSbmogr346h0q",
+                        "username": "pincopallino",
+                        "name": "Pinco",
+                        "surname": "Pallino"
+                        }
+                },
+                {
+                    "_id": "mLD34qA12Dfcv094D3Bpo1gh",
+                    "text": "Another tweet",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "5adFgtu23_564aSbmogr346h0q",
+                        "username": "pincopallino",
+                        "name": "Pinco",
+                        "surname": "Pallino"
+                        }
+                }
+            ]
+        }
+
+## Search for tweets containing a specific string [/search/{word}]
+
+### Get all tweets containing a specific string [GET]
+
+Get all tweets containing a specific string
+
++ Parameters
+    - word: Word to search inside tweets
+    
++ Response 200 (application/json)
+
+        {
+            "ok": "true",
+            "result": [
+                {
+                    "_id": "12dfdbGRqaS34D5Hth5PaXsw",
+                    "text": "Hello World!",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "5adFgtu23_564aSbmogr346h0q",
+                        "username": "pincopallino",
+                        "name": "Pinco",
+                        "surname": "Pallino"
+                        }
+                },
+                {
+                    "_id": "mLD34qA12Dfcv094D3Bpo1gh",
+                    "text": "We live in a beautiful world",
+                    "published": "2015-08-05T08:40:51.620Z",
+                    "user": {
+                        "_id": "9lOrd45Axe174axlfGfCVD23",
+                        "username": "giuseppeverdi",
+                        "name": "Giuseppe",
+                        "surname": "Verdi"
+                        }
+                }
+            ]
+        }
