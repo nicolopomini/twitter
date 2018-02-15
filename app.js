@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 
+//---------ROUTES-------------
+const add = require('./routes/add');
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://root:root@ds235328.mlab.com:35328/twitter');
 const db = mongoose.connection;
@@ -15,6 +18,8 @@ db.once('open', () => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+//route handlers
+app.use('/add', add);
 
 const port = process.env.PORT || 8080;
 
