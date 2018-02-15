@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 					populate('user').
 					exec((err, t) => {
 						if(err)
-							internalError(res, 'Error retriving information');
+							internalError(res, 'Error retrieving information');
 						let ris = {ok: true, result: t};
 						res.statusCode = 200;
   						res.setHeader("Content-Type", "application/json");
