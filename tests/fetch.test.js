@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const getAll = function() {
-	return fetch('http://localhost:8080/fetch', {
+	return fetch('https://twitteruhopper.herokuapp.com/fetch', {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -9,7 +9,7 @@ const getAll = function() {
 	});
 }
 const getByUser = function(username) {
-	return fetch('http://localhost:8080/fetch/' + username, {
+	return fetch('https://twitteruhopper.herokuapp.com/fetch/' + username, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'

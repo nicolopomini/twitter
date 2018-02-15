@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const search = function(word) {
-	return fetch('http://localhost:8080/search/' + word, {
+	return fetch('https://twitteruhopper.herokuapp.com/search/' + word, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'

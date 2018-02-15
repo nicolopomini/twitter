@@ -5,7 +5,7 @@ const bad2 = {user: 'aaaa', text: 'blabla'};
 const bad3 = {text: 'sdfwrf'};
 
 const add = function(body) {
-	return fetch('http://localhost:8080/add', {
+	return fetch('https://twitteruhopper.herokuapp.com/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
