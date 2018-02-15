@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 //---------ROUTES-------------
 const add = require('./routes/add');
 const fetch = require('./routes/fetch');
+const search = require('./routes/search');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://root:root@ds235328.mlab.com:35328/twitter');
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //route handlers
 app.use('/add', add);
 app.use('/fetch', fetch);
+app.use('/search', search);
 
 const port = process.env.PORT || 8080;
 
