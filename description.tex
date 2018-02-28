@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,italian]{babel}
+
+\begin{document}
+
+\author{Nicolò Pomini}
+\title{Twitter exercise}
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+This document provides a simple description of a \textit{Twitter like} \texttt{API}, for an internship interview with \texttt{U-Hopper}.
+
+\section{Content}
+\subsection{Assumptions}
+For simplicity, I made some assumptions.\\
+\begin{itemize}
+\item Firstly, a tweet is composed only by plain text, so no special character - like \textit{hastags} or \textit{tags} - are recognized.
+\item Secondly, no user handling is required. By assumption users are already defined and stored somewhere, and from APIs is not possible to add or modify users.
+\item Finally, every tweet is public, therefore APIs can be used by everyone, with no access-control.
+\end{itemize}
+
+\subsection{Architecture}
+The application is structured following the MVC pattern.
+\begin{description}
+\item[Model] defines data schemas, all the essential to handle users and tweets.
+\item[Control] offers the accessable routes and handles requests.
+\item[View] this part is done just by JSON objects, because this application is only server-side and is not required a human-friendly interface.
+\end{description}
+The application makes use of an external database, for data persistance.\\
+The application offers a \texttt{REST} service, totaly uncoupled and uniterested with client.
+
+\section{Authentication}
+If the environment would require authentication every API should have a specific parameter to recognize the author of the request. In my opinion, there are two methods to authenticate users:
+\begin{itemize}
+\item The stronger method is using a token. A token is an alpha-numeric string, arbitrarily long, unique among all users. Before perform a request, a user has to log into the system and requires a token. For an higher level of security, tokens can also have a time-expiration, so before every request user has to request a new token. This method is quite onerous to implement, but offers a two-level authentication.
+\item An easier way is to use the user ID to identify every request. This method is not applicable if is used a simple \textit{Integer auto-increment} ID, because with a bit of brute force is easy to find a valid ID. But if is used an alpha-numeric ID, like \textit{Mongoose} \texttt{ObjectId} it should works. In fact, if the ID is generated with an alphabet of $x$ symbols, the length of an ID is $n$ and there are $u$ valid users, the probability to guess a valid ID is 
+\[
+\frac{1}{x^n} u
+\]
+which with an alphabet of 31 symbols and not too many users is enough small.
+\end{itemize}
+
+\section{Conclusions}
+For the implementation I choose to use \texttt{Node.JS} because I feel confident to use this language to implement a \texttt{REST} service, in couple with \texttt{Mongoose} for \texttt{MongoDb}, for data storage.
+
+\end{document}
