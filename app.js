@@ -9,7 +9,7 @@ const fetch = require('./routes/fetch');
 const search = require('./routes/search');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://root:root@ds235328.mlab.com:35328/twitter');
+mongoose.connect('mongodb+srv://root:9j2aKYyjFCVZ4DN1@twitter.skh8n.mongodb.net/twitter?retryWrites=true&w=majority');
 const db = mongoose.connection;
 db.on('error', err => {
   console.error(`Error while connecting to DB: ${err.message}`);
